@@ -65,7 +65,7 @@ class _CountryScreenState extends State<CountryScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => CityScreen(countryId: country['id']),
+                        builder: (context) => CityScreen(countryId: country['Id']),
                       ),
                     );
                   },
@@ -75,7 +75,7 @@ class _CountryScreenState extends State<CountryScreen> {
                       children: [
                         Expanded(
                           child: Image.network(
-                            country['ImageURL'], // Adjust according to the JSON structure
+                            country['Image'], // Adjust according to the JSON structure
                             fit: BoxFit.cover,
                           ),
                         ),

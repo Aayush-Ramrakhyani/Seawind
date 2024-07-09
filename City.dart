@@ -54,12 +54,37 @@ class _CityScreenState extends State<CityScreen> {
       ),
       body: isLoading
           ? Center(child: CircularProgressIndicator())
-          : ListView.builder(
+          : GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2, 
+                childAspectRatio: 0.7, 
+              ),
               itemCount: cities.length,
               itemBuilder: (context, index) {
                 final city = cities[index];
-                return ListTile(
-                  title: Text(city['Title']), // Adjust according to the JSON structure
+                return Card(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Expanded(
+                        child: Image.network(
+                          city['Image'], // Adjust according to the JSON structure
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          city['Title'], // Adjust according to the JSON structure
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.0,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ],
+                  ),
                 );
               },
             ),
